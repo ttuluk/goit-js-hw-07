@@ -22,3 +22,25 @@ url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=comp
 alt: 'Group of Horses Running',
 },
 ];
+// <ul id="gallery"></ul>
+const parentList = document.querySelector('#gallery');
+console.log(parentList);
+
+function addElements(array) {
+    console.log(array);
+    const items = array.map((el) => {
+        const itemEl = document.createElement('li');
+
+        const imgEl = document.createElement('img');
+        imgEl.setAttribute('url', el.url);
+        imgEl.setAttribute('alt', el.alt);
+        console.log(imgEl);
+        itemEl.append(imgEl);
+        console.log(itemEl);
+        return itemEl;
+    })
+    return items;
+}
+const item = addElements(images);
+parentList.append(...item);
+console.log(parentList);
