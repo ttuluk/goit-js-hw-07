@@ -1,19 +1,36 @@
-// Задание 4
-// Счетчик состоит из спана и кнопок, которые должны увеличивать и уменьшать значение счетчика на 1.
+const counter = document.getElementById('counter');
+const currentValue = document.getElementById('value');
+const increment = document.querySelector('[data-action="increment"]');
+const decrement = document.querySelector('[data-action="decrement"]');
 
-// Создай переменную counterValue в которой будет хранится текущее значение счетчика.
-// Создай функции increment и decrement для увеличения и уменьшения значения счетчика
-// Добавь слушатели кликов на кнопки, вызовы функций и обновление интерфейса
-const body = document.querySelector('body');
-console.log(body);
-// const addCounter = body.insertAdjacentHTML('beforeend',
-//     `<div id="counter">
-//   <button type="button" data-action="decrement">-1</button>
-//   <span id="value">0</span>
-//   <button type="button" data-action="increment">+1</button>
-// </div>`);
-// console.log(addCounter);
 
-let counterValue = 0;
-const spanEl = document.querySelector('#value');
-console.log(counterValue);
+const counterValue = createCounter();
+function createCounter() {
+
+  let current = 0
+  
+
+  function increment(value) {
+    return (current += value)
+  }
+
+  function decrement(value) {
+    if (value >= 0) {
+      return (current -= value);
+      
+    }
+    return current -= value;
+  }
+
+  return { increment, decrement }
+};
+
+increment.addEventListener('click', () => {
+    let value = counterValue.increment(1);
+    currentValue.textContent = value;
+});
+
+decrement.addEventListener('click', () => {
+    let value = counterValue.decrement(1);
+    currentValue.textContent = value;
+});
