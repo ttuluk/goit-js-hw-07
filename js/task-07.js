@@ -1,25 +1,14 @@
-// Задание 7
-// Напиши скрипт, который реагирует на изменение значения input#font-size-control (событие input) и изменяет инлайн-стиль span#text обновляя свойство font-size. В результате при перетаскивании ползунка будет меняться размер текста.
+const input = document.querySelector("#font-size-control");
 
-// <input id="font-size-control" type="range" />
-// <br />
-// <span id="text">Абракадабра!</span>
-// Задание 8 - дополнительное, выполнять не обязательно
-// Напиши скрипт создания и очистки коллекции элементов. Пользователь вводит количество элементов в input и нажимает кнопку Создать, после чего рендерится коллекция. При нажатии на кнопку Очистить, коллекция элементов очищается.
+const span = document.getElementById('text')
 
-// Создай функцию createBoxes(amount), которая принимает 1 параметр amount - число. Функция создает столько div, сколько указано в amount и добавляет их в div#boxes.
+input.addEventListener("input", onInputRange);
+function onInputRange(event) {
+    const inputElem = event.target.value;
 
-// Каждый созданный div:
+    span.style.fontSize = `${inputElem}%`;
+};
 
-// Имеет случайный rgb цвет фона
-// Размеры самого первого div - 30px на 30px
-// Каждый следующий div после первого, должен быть шире и выше предыдущего на 10px
-// Создай функцию destroyBoxes(), которая очищает div#boxes.
 
-// <div id="controls">
-//   <input type="number" min="0" max="100" step="1" />
-//   <button type="button" data-action="render">Создать</button>
-//   <button type="button" data-action="destroy">Очистить</button>
-// </div>
 
-// <div id="boxes"></div>
+
