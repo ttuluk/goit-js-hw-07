@@ -13,11 +13,11 @@ function addColorInput(elem) {
     const inputElem = elem.target.value;
     elem = inputElem.length;
 
-    if (elem <= dataLength) {
+    if (elem == dataLength) {
         inputEl.classList.add('valid');
         inputEl.classList.remove('invalid');
     }
-    else if (elem > dataLength) {
+    else {
         inputEl.classList.add('invalid');
         inputEl.classList.remove('valid');
     }
